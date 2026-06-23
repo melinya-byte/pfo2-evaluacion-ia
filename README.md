@@ -8,7 +8,7 @@ Este proyecto forma parte de la práctica PFO2 del IFTS N.°29, cuyo objetivo es
 - **Fecha de entrega:** 26/06/2026
 
 ## Acceso al Proyecto
-Repositorio GitHub: 
+Repositorio GitHub: [https://github.com/melinya-byte/pfo2-evaluacion-ia](https://github.com/melinya-byte/pfo2-evaluacion-ia)
  **Vercel:** [Link a tu Vercel aquí]
 
 ## Prompt Maestro Utilizado
