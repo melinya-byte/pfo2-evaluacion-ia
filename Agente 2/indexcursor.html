@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NovaPulse — Innovación Digital</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --violet: #7c3aed;
+      --fuchsia: #d946ef;
+      --cyan: #06b6d4;
+      --pink: #ec4899;
+      --dark: #0f0a1a;
+    }
+
+    * {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark);
+      color: #f8fafc;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .font-display {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .glass-strong {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .bg-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.5;
+      animation: float 8s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .blob-1 {
+      width: 400px;
+      height: 400px;
+      background: var(--violet);
+      top: -100px;
+      left: -100px;
+      animation-delay: 0s;
+    }
+
+    .blob-2 {
+      width: 350px;
+      height: 350px;
+      background: var(--fuchsia);
+      top: 20%;
+      right: -80px;
+      animation-delay: -2s;
+    }
+
+    .blob-3 {
+      width: 300px;
+      height: 300px;
+      background: var(--cyan);
+      bottom: 10%;
+      left: 20%;
+      animation-delay: -4s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -30px) scale(1.05); }
+      66% { transform: translate(-20px, 20px) scale(0.95); }
+    }
+
+    .hero-visual {
+      position: relative;
+      width: 100%;
+      max-width: 480px;
+      aspect-ratio: 1;
+      margin: 0 auto;
+    }
+
+    .hero-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      animation: spin 20s linear infinite;
+    }
+
+    .hero-ring:nth-child(2) {
+      inset: 10%;
+      animation-direction: reverse;
+      animation-duration: 15s;
+      border-color: rgba(124, 58, 237, 0.3);
+    }
+
+    .hero-ring:nth-child(3) {
+      inset: 20%;
+      animation-duration: 25s;
+      border-color: rgba(6, 182, 212, 0.3);
+    }
+
+    .hero-core {
+      position: absolute;
+      inset: 30%;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--violet), var(--fuchsia), var(--cyan));
+      box-shadow: 0 0 60px rgba(124, 58, 237, 0.5), 0 0 120px rgba(217, 70, 239, 0.3);
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 60px rgba(124, 58, 237, 0.5); }
+      50% { transform: scale(1.05); box-shadow: 0 0 80px rgba(217, 70, 239, 0.6); }
+    }
+
+    .card-hover {
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    }
+
+    .card-hover:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(124, 58, 237, 0.25);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--violet), var(--fuchsia));
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(124, 58, 237, 0.4);
+    }
+
+    .btn-outline {
+      transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .header-sticky {
+      transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+    }
+
+    .header-sticky.scrolled {
+      background: rgba(15, 10, 26, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .mobile-menu.open {
+      max-height: 320px;
+    }
+
+    .form-input {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--violet);
+      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.25);
+    }
+
+    .star {
+      color: #fbbf24;
+    }
+
+    .social-icon {
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .social-icon:hover {
+      transform: translateY(-4px);
+      background: rgba(124, 58, 237, 0.3);
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #a78bfa, #e879f9, #22d3ee);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="fixed inset-0 overflow-hidden -z-10">
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+    <div class="bg-blob blob-3"></div>
+  </div>
+
+  <header id="header" class="header-sticky fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 py-4">
+    <nav class="max-w-7xl mx-auto flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2 group">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center font-display font-bold text-sm">N</div>
+        <span class="font-display font-bold text-lg sm:text-xl tracking-tight">Nova<span class="gradient-text">Pulse</span></span>
+      </a>
+
+      <ul class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <li><a href="#inicio" class="hover:text-white transition-colors">Inicio</a></li>
+        <li><a href="#nosotros" class="hover:text-white transition-colors">Nosotros</a></li>
+        <li><a href="#servicios" class="hover:text-white transition-colors">Servicios</a></li>
+        <li><a href="#testimonios" class="hover:text-white transition-colors">Testimonios</a></li>
+        <li><a href="#contacto" class="hover:text-white transition-colors">Contacto</a></li>
+      </ul>
+
+      <div class="hidden md:block">
+        <a href="#contacto" class="btn-primary inline-block px-5 py-2.5 rounded-full text-sm font-semibold text-white">Empezar ahora</a>
+      </div>
+
+      <button id="menu-toggle" class="md:hidden glass p-2 rounded-lg" aria-label="Abrir menú">
+        <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </nav>
+
+    <div id="mobile-menu" class="mobile-menu md:hidden max-w-7xl mx-auto">
+      <ul class="glass rounded-2xl mt-3 p-4 flex flex-col gap-3 text-sm font-medium text-slate-300">
+        <li><a href="#inicio" class="mobile-link block py-2 px-3 rounded-lg hover:bg-white/5 hover:text-white transition-colors">Inicio</a></li>
+        <li><a href="#nosotros" class="mobile-link block py-2 px-3 rounded-lg hover:bg-white/5 hover:text-white transition-colors">Nosotros</a></li>
+        <li><a href="#servicios" class="mobile-link block py-2 px-3 rounded-lg hover:bg-white/5 hover:text-white transition-colors">Servicios</a></li>
+        <li><a href="#testimonios" class="mobile-link block py-2 px-3 rounded-lg hover:bg-white/5 hover:text-white transition-colors">Testimonios</a></li>
+        <li><a href="#contacto" class="mobile-link block py-2 px-3 rounded-lg hover:bg-white/5 hover:text-white transition-colors">Contacto</a></li>
+        <li class="pt-2">
+          <a href="#contacto" class="mobile-link btn-primary block text-center px-5 py-2.5 rounded-full text-sm font-semibold text-white">Empezar ahora</a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+
+    <section id="inicio" class="min-h-screen flex items-center pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="reveal text-center lg:text-left">
+          <span class="inline-block glass px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium text-violet-300 mb-6">
+            ✦ Agencia Digital de Nueva Generación
+          </span>
+          <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight mb-6">
+            Transformamos ideas en
+            <span class="gradient-text"> experiencias digitales</span>
+          </h1>
+          <p class="text-slate-400 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed">
+            Diseñamos productos web que cautivan, convierten y escalan. Estrategia, diseño y desarrollo en un solo equipo apasionado.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <a href="#contacto" class="btn-primary inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-semibold text-white">
+              Solicitar propuesta
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+            <a href="#servicios" class="btn-outline inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-semibold text-white border border-white/20">
+              Ver servicios
+            </a>
+          </div>
+          <div class="flex items-center gap-6 mt-10 justify-center lg:justify-start">
+            <div class="text-center">
+              <p class="font-display text-2xl sm:text-3xl font-bold gradient-text">150+</p>
+              <p class="text-xs sm:text-sm text-slate-500">Proyectos</p>
+            </div>
+            <div class="w-px h-10 bg-white/10"></div>
+            <div class="text-center">
+              <p class="font-display text-2xl sm:text-3xl font-bold gradient-text">98%</p>
+              <p class="text-xs sm:text-sm text-slate-500">Satisfacción</p>
+            </div>
+            <div class="w-px h-10 bg-white/10"></div>
+            <div class="text-center">
+              <p class="font-display text-2xl sm:text-3xl font-bold gradient-text">8+</p>
+              <p class="text-xs sm:text-sm text-slate-500">Años</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal hero-visual">
+          <div class="hero-ring"></div>
+          <div class="hero-ring"></div>
+          <div class="hero-ring"></div>
+          <div class="hero-core"></div>
+          <div class="absolute top-[15%] right-[10%] glass-strong px-4 py-2 rounded-xl text-xs font-medium animate-bounce" style="animation-duration:3s;">
+            🚀 +340% ROI
+          </div>
+          <div class="absolute bottom-[20%] left-[5%] glass-strong px-4 py-2 rounded-xl text-xs font-medium" style="animation: float 4s ease-in-out infinite;">
+            ⚡ Performance 99
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="nosotros" class="py-20 sm:py-28 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div class="reveal order-2 lg:order-1">
+            <div class="glass-strong rounded-3xl p-8 sm:p-10 relative overflow-hidden">
+              <div class="absolute -top-10 -right-10 w-40 h-40 bg-violet-500/20 rounded-full blur-3xl"></div>
+              <div class="grid grid-cols-2 gap-4 relative">
+                <div class="glass rounded-2xl p-5 text-center card-hover">
+                  <p class="font-display text-3xl font-bold gradient-text">50+</p>
+                  <p class="text-xs text-slate-400 mt-1">Clientes activos</p>
+                </div>
+                <div class="glass rounded-2xl p-5 text-center card-hover">
+                  <p class="font-display text-3xl font-bold gradient-text">12</p>
+                  <p class="text-xs text-slate-400 mt-1">Países</p>
+                </div>
+                <div class="glass rounded-2xl p-5 text-center card-hover">
+                  <p class="font-display text-3xl font-bold gradient-text">24/7</p>
+                  <p class="text-xs text-slate-400 mt-1">Soporte</p>
+                </div>
+                <div class="glass rounded-2xl p-5 text-center card-hover">
+                  <p class="font-display text-3xl font-bold gradient-text">15</p>
+                  <p class="text-xs text-slate-400 mt-1">Premios</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal order-1 lg:order-2">
+            <span class="text-violet-400 text-sm font-semibold uppercase tracking-wider">Sobre Nosotros</span>
+            <h2 class="font-display text-3xl sm:text-4xl font-bold mt-3 mb-6 leading-tight">
+              Somos el equipo que tu marca <span class="gradient-text">necesita</span>
+            </h2>
+            <p class="text-slate-400 leading-relaxed mb-4">
+              En NovaPulse combinamos creatividad, tecnología y datos para construir soluciones digitales que generan impacto real. Desde startups hasta empresas consolidadas, acompañamos cada etapa del crecimiento.
+            </p>
+            <p class="text-slate-400 leading-relaxed mb-8">
+              Nuestro enfoque es simple: entender profundamente tu negocio, diseñar con propósito y ejecutar con excelencia. Sin plantillas genéricas, solo resultados medibles.
+            </p>
+            <ul class="space-y-3">
+              <li class="flex items-center gap-3 text-sm text-slate-300">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-violet-500/20 flex items-center justify-center text-violet-400 text-xs">✓</span>
+                Metodología ágil y transparente
+              </li>
+              <li class="flex items-center gap-3 text-sm text-slate-300">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-violet-500/20 flex items-center justify-center text-violet-400 text-xs">✓</span>
+                Equipo multidisciplinario senior
+              </li>
+              <li class="flex items-center gap-3 text-sm text-slate-300">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-violet-500/20 flex items-center justify-center text-violet-400 text-xs">✓</span>
+                Resultados medibles desde el día uno
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicios" class="py-20 sm:py-28 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto">
+        <div class="reveal text-center max-w-2xl mx-auto mb-14 sm:mb-16">
+          <span class="text-violet-400 text-sm font-semibold uppercase tracking-wider">Servicios</span>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold mt-3 mb-4">
+            Todo lo que necesitas para <span class="gradient-text">crecer online</span>
+          </h2>
+          <p class="text-slate-400">Soluciones integrales diseñadas para maximizar tu presencia digital y acelerar tus resultados.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <article class="reveal glass rounded-2xl p-7 sm:p-8 card-hover">
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center mb-6 text-2xl">🎨</div>
+            <h3 class="font-display text-xl font-bold mb-3">Diseño UI/UX</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-5">Interfaces intuitivas y atractivas que mejoran la experiencia del usuario y aumentan las conversiones.</p>
+            <a href="#contacto" class="text-violet-400 text-sm font-semibold hover:text-violet-300 transition-colors inline-flex items-center gap-1">
+              Saber más
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+          </article>
+
+          <article class="reveal glass rounded-2xl p-7 sm:p-8 card-hover">
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-500 to-violet-500 flex items-center justify-center mb-6 text-2xl">💻</div>
+            <h3 class="font-display text-xl font-bold mb-3">Desarrollo Web</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-5">Sitios y aplicaciones web rápidas, seguras y escalables con las tecnologías más modernas del mercado.</p>
+            <a href="#contacto" class="text-violet-400 text-sm font-semibold hover:text-violet-300 transition-colors inline-flex items-center gap-1">
+              Saber más
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+          </article>
+
+          <article class="reveal glass rounded-2xl p-7 sm:p-8 card-hover sm:col-span-2 lg:col-span-1">
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-fuchsia-500 to-pink-500 flex items-center justify-center mb-6 text-2xl">📈</div>
+            <h3 class="font-display text-xl font-bold mb-3">Marketing Digital</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-5">Estrategias de SEO, contenido y publicidad digital para posicionar tu marca y atraer clientes cualificados.</p>
+            <a href="#contacto" class="text-violet-400 text-sm font-semibold hover:text-violet-300 transition-colors inline-flex items-center gap-1">
+              Saber más
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonios" class="py-20 sm:py-28 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto">
+        <div class="reveal text-center max-w-2xl mx-auto mb-14 sm:mb-16">
+          <span class="text-violet-400 text-sm font-semibold uppercase tracking-wider">Testimonios</span>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold mt-3 mb-4">
+            Lo que dicen nuestros <span class="gradient-text">clientes</span>
+          </h2>
+          <p class="text-slate-400">La confianza de quienes ya han transformado su presencia digital con nosotros.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <article class="reveal glass rounded-2xl p-7 card-hover">
+            <div class="flex gap-1 mb-4">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed mb-6">"NovaPulse transformó completamente nuestra plataforma. El rediseño incrementó nuestras conversiones un 85% en solo tres meses."</p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center font-bold text-sm">MR</div>
+              <div>
+                <p class="text-sm font-semibold">María Rodríguez</p>
+                <p class="text-xs text-slate-500">CEO, TechFlow</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="reveal glass rounded-2xl p-7 card-hover">
+            <div class="flex gap-1 mb-4">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed mb-6">"Profesionales, creativos y siempre disponibles. El equipo entendió nuestra visión desde el primer día y la superó con creces."</p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-violet-500 flex items-center justify-center font-bold text-sm">CL</div>
+              <div>
+                <p class="text-sm font-semibold">Carlos López</p>
+                <p class="text-xs text-slate-500">Fundador, GreenLab</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="reveal glass rounded-2xl p-7 card-hover sm:col-span-2 lg:col-span-1">
+            <div class="flex gap-1 mb-4">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed mb-6">"La mejor inversión que hemos hecho en marketing digital. ROI del 340% en la primera campaña. Totalmente recomendados."</p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-fuchsia-500 to-pink-500 flex items-center justify-center font-bold text-sm">AG</div>
+              <div>
+                <p class="text-sm font-semibold">Ana García</p>
+                <p class="text-xs text-slate-500">Directora, ModaViva</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="py-20 sm:py-28 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+          <div class="reveal">
+            <span class="text-violet-400 text-sm font-semibold uppercase tracking-wider">Contacto</span>
+            <h2 class="font-display text-3xl sm:text-4xl font-bold mt-3 mb-4 leading-tight">
+              Hablemos de tu <span class="gradient-text">próximo proyecto</span>
+            </h2>
+            <p class="text-slate-400 leading-relaxed mb-8">
+              Cuéntanos tu idea y te responderemos en menos de 24 horas con una propuesta personalizada. Sin compromiso.
+            </p>
+            <div class="space-y-4">
+              <div class="flex items-center gap-4">
+                <div class="glass w-11 h-11 rounded-xl flex items-center justify-center text-lg">📧</div>
+                <div>
+                  <p class="text-xs text-slate-500">Email</p>
+                  <p class="text-sm font-medium">hola@novapulse.io</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="glass w-11 h-11 rounded-xl flex items-center justify-center text-lg">📱</div>
+                <div>
+                  <p class="text-xs text-slate-500">Teléfono</p>
+                  <p class="text-sm font-medium">+34 900 123 456</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="glass w-11 h-11 rounded-xl flex items-center justify-center text-lg">📍</div>
+                <div>
+                  <p class="text-xs text-slate-500">Oficina</p>
+                  <p class="text-sm font-medium">Madrid, España</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <form class="reveal glass-strong rounded-3xl p-7 sm:p-9 space-y-5" onsubmit="return false;">
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label for="nombre" class="block text-xs font-medium text-slate-400 mb-2">Nombre</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" class="form-input w-full px-4 py-3 rounded-xl text-sm text-white placeholder-slate-500">
+              </div>
+              <div>
+                <label for="email" class="block text-xs font-medium text-slate-400 mb-2">Email</label>
+                <input type="email" id="email" name="email" placeholder="tu@email.com" class="form-input w-full px-4 py-3 rounded-xl text-sm text-white placeholder-slate-500">
+              </div>
+            </div>
+            <div>
+              <label for="asunto" class="block text-xs font-medium text-slate-400 mb-2">Asunto</label>
+              <input type="text" id="asunto" name="asunto" placeholder="¿En qué podemos ayudarte?" class="form-input w-full px-4 py-3 rounded-xl text-sm text-white placeholder-slate-500">
+            </div>
+            <div>
+              <label for="mensaje" class="block text-xs font-medium text-slate-400 mb-2">Mensaje</label>
+              <textarea id="mensaje" name="mensaje" rows="5" placeholder="Cuéntanos sobre tu proyecto..." class="form-input w-full px-4 py-3 rounded-xl text-sm text-white placeholder-slate-500 resize-none"></textarea>
+            </div>
+            <button type="submit" class="btn-primary w-full py-3.5 rounded-xl font-semibold text-white text-sm">
+              Enviar mensaje
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-white/10 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
+        <div class="sm:col-span-2 lg:col-span-1">
+          <a href="#" class="flex items-center gap-2 mb-4">
+            <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center font-display font-bold text-xs">N</div>
+            <span class="font-display font-bold text-lg">NovaPulse</span>
+          </a>
+          <p class="text-slate-500 text-sm leading-relaxed max-w-xs">Creamos experiencias digitales que impulsan el crecimiento de tu negocio.</p>
+        </div>
+
+        <div>
+          <h4 class="font-display font-semibold text-sm mb-4">Enlaces</h4>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li><a href="#inicio" class="hover:text-white transition-colors">Inicio</a></li>
+            <li><a href="#nosotros" class="hover:text-white transition-colors">Nosotros</a></li>
+            <li><a href="#servicios" class="hover:text-white transition-colors">Servicios</a></li>
+            <li><a href="#contacto" class="hover:text-white transition-colors">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-display font-semibold text-sm mb-4">Legal</h4>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li><a href="#" class="hover:text-white transition-colors">Política de Privacidad</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Términos de Servicio</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Cookies</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Aviso Legal</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-display font-semibold text-sm mb-4">Redes Sociales</h4>
+          <div class="flex gap-3">
+            <a href="#" class="social-icon glass w-10 h-10 rounded-xl flex items-center justify-center" aria-label="Twitter">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" class="social-icon glass w-10 h-10 rounded-xl flex items-center justify-center" aria-label="LinkedIn">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 114.126 0 2.063 2.063 0 01-2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="#" class="social-icon glass w-10 h-10 rounded-xl flex items-center justify-center" aria-label="Instagram">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="#" class="social-icon glass w-10 h-10 rounded-xl flex items-center justify-center" aria-label="GitHub">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.604-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.297 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-slate-500 text-xs sm:text-sm">&copy; 2026 NovaPulse. Todos los derechos reservados.</p>
+        <p class="text-slate-600 text-xs">Hecho con ♥ en España</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
+
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+      iconOpen.classList.toggle('hidden');
+      iconClose.classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+      });
+    });
+
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
