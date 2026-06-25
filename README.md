@@ -56,7 +56,7 @@ Debes implementar las siguientes secciones de forma jerárquica:
 Genera el código en un único archivo HTML que contenga el CSS necesario en un tag <style> y los scripts en <script>.
 ```
 
-## Prompt maestro optimizado para Cursor (el previo hacía loop en Cursor)
+## Prompt maestro optimizado para Cursor (por comportamiento recursivo en Cursor)
 ```
 # Role
 Actúa como un Ingeniero Senior de Frontend. Tu tarea es generar una Landing Page profesional, estética y responsiva, siguiendo las mejores prácticas de UI/UX.
@@ -109,7 +109,7 @@ Se ha respetado estrictamente la restricción de **no modificar el código gener
 - `index.html`: Portada principal con acceso a las landing pages.
 - `Agente1/indexcodex.html`: Landing page generada por Codex.
 - `Agente2/indexcursor.html`: Landing page generada por Cursor.
-- `codexweb.PNG`: Captura de pantalla de la landing de Codex.
-- `cursorweb.PNG`: Captura de pantalla de la landing de Cursor.
+- `codexweb.png`: Captura de pantalla de la landing de Codex.
+- `cursorweb.png`: Captura de pantalla de la landing de Cursor.
 - `prompt.txt`: Prompt utilizado para la generación.
 - `README.md`: Documentación del proyecto.
