@@ -1,22 +1,29 @@
 # PFO2: Evaluación de Agentes de IA en el Desarrollo Frontend
 
-Este proyecto forma parte de la práctica PFO2 del IFTS N.°29, cuyo objetivo es evaluar y comparar la capacidad de distintos agentes de Inteligencia Artificial (Codex y Cursor) para generar una Landing Page profesional siguiendo instrucciones precisas de ingeniería de prompts.
+## Checklist de Entrega
+- [x] Datos del estudiante completados.
+- [x] Link al repositorio Github.
+- [x] Link al deploy unificado de Vercel añadido.
+- [x] Prompt maestro utilizado incluido.
+- [x] Comparativa de resultados.
+- [x] Capturas de pantalla de ambos sitios web añadidas.
+- [x] Respetada la metodología de no modificar manualmente el código.
+- [x] Estructura del repositorio
 
-## Autor
+## Datos del Estudiante
 - **Nombre:** Gabriela Gonzalez
-- **Materia:** [Nombre de la materia]
-- **Fecha de entrega:** 26/06/2026
+- **Materia:** Desarrollo de Sistemas Web (Front End)
+- **Comisión** D (Lunes)
+- **Institución:** IFTS N.°29
+- **Fecha de entrega:** 24/06/2026
 
 ## Acceso al Proyecto
-Repositorio GitHub: [https://github.com/melinya-byte/pfo2-evaluacion-ia](https://github.com/melinya-byte/pfo2-evaluacion-ia)
- **Vercel:** [Link a tu Vercel aquí]
+- **Repositorio GitHub:** [https://github.com/melinya-byte/pfo2-evaluacion-ia](https://github.com/melinya-byte/pfo2-evaluacion-ia)
+- **Deploy Unificado (Vercel):** [https://pfo2-evaluacion-ia.vercel.app/](https://pfo2-evaluacion-ia.vercel.app/)
 
 ## Prompt Maestro Utilizado
-Para asegurar la consistencia en los resultados, se utilizó la siguiente instrucción en ambos agentes. El prompt fue generado por Gemini AI a partir de instrucciones que le ingresara. Este primer prompt funciono adecuadamente en el agente Codex. En cambio al probarlo en Cursor se produjo un loop. Se procedió a la optimización del prompt, tras lo cual Cursor fue capaz de cumplir con lo especificado.
-
-**Prompt Maestro que funcionó en Codex**
-
-> *# Role
+```
+# Role
 Actúa como un Ingeniero Senior de Frontend especializado en UI/UX con dominio en tecnologías modernas (HTML5, Tailwind CSS y JavaScript moderno). Tu objetivo es desarrollar una Landing Page de alta conversión, estética, moderna y totalmente responsiva.
 
 # Contexto del Proyecto
@@ -41,17 +48,16 @@ Debes implementar las siguientes secciones de forma jerárquica:
 7. Footer: Links a redes sociales, copyright y links legales básicos.
 
 # Reglas de Ejecución (Restricciones)
-- Entregar una solución completa y funcional en la primera iteración.
+- NO modifiques código manualmente: debes entregar una solución completa y funcional en la primera iteración.
 - Asegura que el código sea semántico y optimizado.
 - No incluyas scripts pesados; usa CSS para las animaciones donde sea posible.
 
-
-
 # Resultado Esperado
 Genera el código en un único archivo HTML que contenga el CSS necesario en un tag <style> y los scripts en <script>.
+```
 
-**Prompt optimizado para Cursor**
-
+## Prompt maestro optimizado para Cursor (el previo hacía loop en Cursor)
+```
 # Role
 Actúa como un Ingeniero Senior de Frontend. Tu tarea es generar una Landing Page profesional, estética y responsiva, siguiendo las mejores prácticas de UI/UX.
 
@@ -79,23 +85,31 @@ Estructura obligatoria:
 4. NO modifiques, corrijas ni re-escribas el código una vez generado.
 5. OBJETIVO: Entregar un archivo funcional, limpio y listo para implementar. 
 6. DETENTE inmediatamente al terminar la etiqueta </html>.
-
+```
 
 ## Comparativa de Resultados
 
 ### 1. Landing Page - Codex
 - **Archivo:** `/indexcodex.html`
-- **Observaciones:** [Aquí puedes poner una breve línea: ej. "El código fue generado de forma directa y cumplió con la estructura solicitada sin iteraciones."]
+- **Observaciones:** El código fue generado de forma directa en una única iteración. Codex demostró una excelente capacidad para interpretar las especificaciones de diseño, integrando correctamente Tailwind CSS vía CDN, implementando efectos visuales avanzados como glassmorphism y animaciones personalizadas, todo manteniendo una estructura HTML semántica y una arquitectura responsiva altamente funcional.
+- **Captura:** ![Landing Codex](codexweb.png)
 
 ### 2. Landing Page - Cursor
 - **Archivo:** `/indexcursor.html`
-- **Observaciones:** [Aquí puedes poner una breve línea: ej. "El agente mostró gran precisión en el uso de Tailwind CSS y aplicó los efectos visuales de glassmorphism de manera efectiva."]
+- **Observaciones:** La landing page generada a través de Cursor destaca por un nivel de sofisticación visual superior, ofreciendo una experiencia muy pulida. El diseño integra de forma adecuada elementos complejos como animaciones de esferas flotantes, efectos de glassmorphism y transiciones suaves que elevan la percepción de calidad del producto final, tal como se aprecia en la imagen cursorweb.
+
+Desafíos en el proceso de desarrollo:
+Durante la implementación, el prompt maestro generó inicialmente un comportamiento recursivo (loop) que impedía la correcta renderización de algunos componentes. Este inconveniente se resolvió mediante una optimización iterativa del prompt, ajustando las instrucciones para definir límites claros en la estructura del código y los alcances del diseño. Una vez superado este ajuste, el resultado final fue altamente satisfactorio, logrando una arquitectura sólida, responsiva y estéticamente profesional que supera mis expectativas iniciales en relación a Cursor, el que me dio problemas desde su instalación hasta el comportamiento recursivo.
+- **Captura:** ![Landing Cursor](cursorweb.png)
 
 ## Metodología
-Se ha respetado estrictamente la restricción de **no modificar el código generado manualmente**, permitiendo evaluar la capacidad de resolución de problemas, semántica y adherencia a los estándares de UI/UX de cada agente de manera independiente.
+Se ha respetado estrictamente la restricción de **no modificar el código generado manualmente**, evaluando la capacidad de resolución autónoma de cada agente bajo los requisitos mínimos solicitados: Cabecera, Hero Section, Sobre Nosotros, Servicios, Testimonios, Formulario de contacto y Footer.
 
 ## Estructura del Repositorio
 - `index.html`: Portada principal con acceso a las landing pages.
-- `indexcodex.html`: Resultado generado por Codex.
-- `indexcursor.html`: Resultado generado por Cursor.
+- `Agente1/indexcodex.html`: Landing page generada por Codex.
+- `Agente2/indexcursor.html`: Landing page generada por Cursor.
+- `codexweb.PNG`: Captura de pantalla de la landing de Codex.
+- `cursorweb.PNG`: Captura de pantalla de la landing de Cursor.
+- `prompt.txt`: Prompt utilizado para la generación.
 - `README.md`: Documentación del proyecto.
